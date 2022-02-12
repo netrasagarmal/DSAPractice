@@ -49,25 +49,29 @@ public:
 
 /* The below method sorts the stack s 
 you are required to complete the below method */
-void sorted(stack<int> &s,int x){
-   if(s.empty() || x>s.top()){
-       s.push(x);
-       return;
-       
-   }
-   int tmp=s.top();
-   s.pop();
-   sorted(s,x);
-   s.push(tmp);
+vector<int> sortVector(vector<int> v){
+    sort(v.begin(), v.end());
+    
+    return v;
 }
 void SortedStack :: sort()
 {
    //Your code here
-   if(!s.empty()){
-       int x=s.top();
-       s.pop();
-       sort();
-       sorted(s,x);
+   
+   if(s.empty()!=true|| s.size()!=1){
+       vector<int> v;
+       while(!s.empty()){
+           int x = s.top();
+           v.push_back(x);
+           s.pop();
+       }
+       
+       v = sortVector(v);
+       
+       for(int i=0; i<v.size(); i++){
+           s.push(v[i]);
+       }
    }
+   
    
 }
